@@ -1,0 +1,5 @@
+services:
+  c2imgbot:
+    image: callmephilip/bsky.c2img:latest
+    restart: always
+    env_file: ".env"
