@@ -8,4 +8,4 @@ jobs:
       - name: Install playwright browser deps
         run: pip install playwright & playwright install --with-deps
       - name: Run nbdev CI jaz
-        uses: fastai/workflows/nbdev-ci@master]
+        uses: fastai/workflows/nbdev-ci@master
