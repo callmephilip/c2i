@@ -1,0 +1,22 @@
+[
+  {
+    "objectID": "core.html",
+    "href": "core.html",
+    "title": "core",
+    "section": "",
+    "text": "source\n\ngenerate_screenshot\n\n generate_screenshot (code, code_file='./playground.html',\n                      screenshots_dir='./screenshots')\n\n\nfrom IPython.display import Image\n\nasync def demo(code):\n  img = await generate_screenshot(code=code)\n  return Image(filename=img)\n\n\n\nFairly short python example\n\nawait demo(\"\"\"async def main():\n    await asyncio.sleep(1)\n    print('hello')\n\nasyncio.run(main())\"\"\")\n\n\n\n\n\n\n\n\n\n\nA small React component\n\nawait demo(\"\"\"\nexport const App = () =&gt; {\n  return (\n    &lt;div&gt;\n      &lt;h1&gt;Hello World&lt;/h1&gt;\n    &lt;/div&gt;\n  );\n}\n\"\"\")\n\n\n\n\n\n\n\n\n\n\nA bunch of tailwind stuff\n\nawait demo(\"\"\"&lt;figure class=\"bg-slate-100 rounded-xl p-8 dark:bg-slate-800\"&gt;\n  &lt;img class=\"w-24 h-24 rounded-full mx-auto\" src=\"/sarah-dayan.jpg\" alt=\"\" width=\"384\"\n           height=\"512\"&gt;\n  &lt;div class=\"pt-6 space-y-4\"&gt;\n    &lt;blockquote&gt;\n      &lt;p class=\"text-lg\"&gt;\n        “Tailwind CSS is the only framework that I've seen scale\n        on large teams. It’s easy to customize, adapts to any design,\n        and the build size is tiny.”\n      &lt;/p&gt;\n    &lt;/blockquote&gt;\n    &lt;figcaption&gt;\n      &lt;div&gt;\n        Sarah Dayan\n      &lt;/div&gt;\n      &lt;div&gt;\n        Staff Engineer, Algolia\n      &lt;/div&gt;\n    &lt;/figcaption&gt;\n  &lt;/div&gt;\n&lt;/figure&gt;\"\"\")\n\n\n\n\n\n\n\n\n\n\nA little bit of Rust\n\nawait demo(\"\"\"// This is a comment, and is ignored by the compiler.\n// You can test this code by clicking the \"Run\" button over there -&gt;\n// or if you prefer to use your keyboard, you can use the \"Ctrl + Enter\"\n// shortcut.\n\n// This code is editable, feel free to hack it!\n// You can always return to the original code by clicking the \"Reset\" button -&gt;\n\n// This is the main function.\nfn main() {\n    // Statements here are executed when the compiled binary is called.\n\n    // Print text to the console.\n    println!(\"Hello World!\");\n}\"\"\")\n\n\n\n\n\n\n\n\n\n# try with resolution: 513 x 513",
+    "crumbs": [
+      "core"
+    ]
+  },
+  {
+    "objectID": "bsky.html",
+    "href": "bsky.html",
+    "title": "bsky integration",
+    "section": "",
+    "text": "source\n\nmain\n\n main (run_once=False)\n\n\n\nRunning bot on your server/computer\nTo run the bot, make sure your env is configured (check .env.example) and then use main function\n\nawait main(run_once=True)\n\nStart listening for notifications...\nSuccessfully process notification. Last seen at: 2024-12-06T11:29:29.457486+00:00",
+    "crumbs": [
+      "bsky integration"
+    ]
+  }
+]
