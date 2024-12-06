@@ -20,10 +20,10 @@ FETCH_NOTIFICATIONS_DELAY_SEC = 5
 async def main(run_once = False) -> None:
     bot_handle, password = os.getenv('BSKY_BOT_HANDLE'), os.getenv('BSKY_PASSWORD')
 
+    if not bot_handle or not password: raise ValueError('Please set BSKY_BOT_HANDLE and BSKY_PASSWORD environment variables')
+
     # clean up bot_handle if needed
     bot_handle = bot_handle.replace('@', '')
-
-    if not bot_handle or not password: raise ValueError('Please set BSKY_BOT_HANDLE and BSKY_PASSWORD environment variables')
 
     async_client = AsyncClient()
     await async_client.login(bot_handle, password)
