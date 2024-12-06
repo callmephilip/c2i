@@ -20,6 +20,9 @@ FETCH_NOTIFICATIONS_DELAY_SEC = 5
 async def main(run_once = False) -> None:
     bot_handle, password = os.getenv('BSKY_BOT_HANDLE'), os.getenv('BSKY_PASSWORD')
 
+    # clean up bot_handle if needed
+    bot_handle = bot_handle.replace('@', '')
+
     if not bot_handle or not password: raise ValueError('Please set BSKY_BOT_HANDLE and BSKY_PASSWORD environment variables')
 
     async_client = AsyncClient()
@@ -33,9 +36,8 @@ async def main(run_once = False) -> None:
 
         root_post_ref = models.create_strong_ref(notification)
         reply_to = ReplyRef(parent=root_post_ref, root=root_post_ref)
-        # await async_client.send_post(text='hey hey', reply_to=reply_to)
-
-        content = post.text.replace(bot_handle, '').strip()
+        
+        content = post.text.replace(f"@{bot_handle}", '').strip()
         
         with open(await generate_screenshot(code=content), 'rb') as f:
           await async_client.send_image(text='', image=f.read(), image_alt='Code snippet', reply_to=reply_to)
