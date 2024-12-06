@@ -1,0 +1,273 @@
+<html>
+  <head>
+    <title>Playground</title>
+    <style>
+      /* based on: https://codepen.io/tsq/pen/JjovJWy */
+      /*
+      ========================================
+      Reset
+      ========================================
+    */
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
+    /*
+      ========================================
+      Basic
+      ========================================
+    */
+    html {
+      font-size: 62.5%;
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: "Source Code Pro", monospace;
+      background-color: #19161e;
+      color: #fff;
+    }
+
+    /*
+      ========================================
+      Layout
+      ========================================
+    */
+    .container {
+      padding-top: 20rem;
+      padding-bottom: 20rem;
+      padding-left: 10rem;
+      padding-right: 10rem;
+      background: linear-gradient(to top, #c471f5 0%, #fa71cd 100%);
+      display: inline-block;
+    }
+
+    /*
+      ========================================
+      Component
+      ========================================
+    */
+    .mac-terminal {
+      background-color: #0d1117;
+      border-radius: 5px;
+      width: 70rem;
+      height: 50rem;
+      /* margin: 0 auto; */
+    }
+
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 4rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+      padding: 0 1.4rem;
+    }
+    .header__op {
+      display: flex;
+      align-items: center;
+    }
+    .header__op-icon {
+      width: 1.4rem;
+      height: 1.4rem;
+      border-radius: 50%;
+    }
+    .header__op-icon:not(:last-child) {
+      margin-right: 0.7rem;
+    }
+    .header__op-icon--red {
+      background-color: #FF544D;
+      border: 1px solid #DA3C37;
+    }
+    .header__op-icon--yellow {
+      background-color: #FFB429;
+      border: 1px solid #F0A318;
+    }
+    .header__op-icon--green {
+      background-color: #25C63A;
+      border: 1px solid #12A025;
+    }
+    .header__title {
+      color: #fff;
+      font-family: "Open Sans", sans-serif;
+      font-size: 1.2rem;
+    }
+    .header__empty {
+      width: 5.6rem;
+    }
+
+    @-webkit-keyframes flash {
+      0% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 1;
+      }
+    }
+
+    @keyframes flash {
+      0% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 1;
+      }
+    }
+    .body {
+      font-size: 1.3rem;
+    }
+    .body__row {
+      margin-top: 1.3rem;
+      line-height: 1.7rem;
+      padding: 0 2rem;
+      display: flex;
+      align-items: center;
+    }
+    .body__row-arrow {
+      width: 0.8rem;
+      height: 0.6rem;
+      background-color: #40E800;
+      -webkit-clip-path: polygon(0% 30%, 60% 30%, 60% 0%, 100% 50%, 60% 100%, 60% 70%, 0% 70%);
+              clip-path: polygon(0% 30%, 60% 30%, 60% 0%, 100% 50%, 60% 100%, 60% 70%, 0% 70%);
+      margin-right: 0.9rem;
+    }
+    .body__row-folder {
+      color: #56F2E6;
+      margin-right: 1rem;
+    }
+    .body__row-git--label {
+      color: #2D9CDB;
+    }
+    .body__row-git--branch {
+      color: #EB5757;
+    }
+    .body__row-git--branch-detail {
+      color: #F2C94C;
+    }
+    .body__row-git--branch-time {
+      color: #27AE60;
+    }
+    .body__row-git--author {
+      color: #2D9CDB;
+    }
+    .body__row-result {
+      margin-left: 1rem;
+    }
+    .body__row-cursor {
+      width: 0.5rem;
+      height: 1.5rem;
+      background-color: #BB6BD9;
+      border: 1px solid #BB6BD9;
+      -webkit-animation: flash 1s ease-in-out infinite;
+              animation: flash 1s ease-in-out infinite;
+    }
+    </style>
+    <style>
+      .hljs {
+        color: #c9d1d9;
+        background: #0d1117;
+      }
+      .hljs-doctag,
+      .hljs-keyword,
+      .hljs-meta .hljs-keyword,
+      .hljs-template-tag,
+      .hljs-template-variable,
+      .hljs-type,
+      .hljs-variable.language_ {
+        color: #ff7b72;
+      }
+      .hljs-title,
+      .hljs-title.class_,
+      .hljs-title.class_.inherited__,
+      .hljs-title.function_ {
+        color: #d2a8ff;
+      }
+      .hljs-attr,
+      .hljs-attribute,
+      .hljs-literal,
+      .hljs-meta,
+      .hljs-number,
+      .hljs-operator,
+      .hljs-selector-attr,
+      .hljs-selector-class,
+      .hljs-selector-id,
+      .hljs-variable {
+        color: #79c0ff;
+      }
+      .hljs-meta .hljs-string,
+      .hljs-regexp,
+      .hljs-string {
+        color: #a5d6ff;
+      }
+      .hljs-built_in,
+      .hljs-symbol {
+        color: #ffa657;
+      }
+      .hljs-code,
+      .hljs-comment,
+      .hljs-formula {
+        color: #8b949e;
+      }
+      .hljs-name,
+      .hljs-quote,
+      .hljs-selector-pseudo,
+      .hljs-selector-tag {
+        color: #7ee787;
+      }
+      .hljs-subst {
+        color: #c9d1d9;
+      }
+      .hljs-section {
+        color: #1f6feb;
+        font-weight: 700;
+      }
+      .hljs-bullet {
+        color: #f2cc60;
+      }
+      .hljs-emphasis {
+        color: #c9d1d9;
+        font-style: italic;
+      }
+      .hljs-strong {
+        color: #c9d1d9;
+        font-weight: 700;
+      }
+      .hljs-addition {
+        color: #aff5b4;
+        background-color: #033a16;
+      }
+      .hljs-deletion {
+        color: #ffdcd7;
+        background-color: #67060c;
+      }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  </head>
+  <body>
+    <div id="code" class="container">
+      <div class="mac-terminal">
+        <div class="header">
+          <div class="header__op">
+            <span class="header__op-icon header__op-icon--red"></span>
+            <span class="header__op-icon header__op-icon--yellow"></span class="header__op-icon header__op-icon--yellow">
+            <span class="header__op-icon header__op-icon--green"></span>
+          </div>
+          <div class="header__title">root@c2img.bsky.social:~/projects</div>
+          <div class="header__empty"></div>
+        </div>
+        <div class="body">
+          <div class="body__row">
+            <pre><code>$code</code></pre>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>hljs.highlightAll();</script>
+  </body>
+</html>
