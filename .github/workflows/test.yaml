@@ -6,6 +6,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Install playwright browser deps
-        run: pip install playwright & playwright install --with-deps
+        run: pip install playwright && playwright install --with-deps
       - name: Run nbdev CI jaz
         uses: fastai/workflows/nbdev-ci@master
