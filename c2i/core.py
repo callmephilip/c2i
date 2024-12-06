@@ -23,8 +23,9 @@ async def generate_screenshot(code, code_file = "./playground.html", screenshots
   with open(code_file, 'r') as file: playground = Template(file.read()).substitute(code=cc)
 
   async with async_playwright() as playwright:
-    webkit = playwright.webkit
-    browser = await webkit.launch()
+    # webkit = playwright.webkit
+    chromium = playwright.chromium
+    browser = await chromium.launch()
     browser_context = await browser.new_context(device_scale_factor=2)
     page = await browser_context.new_page()
     await page.set_content(playground)
